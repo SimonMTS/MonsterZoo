@@ -1,5 +1,14 @@
 class terrainView {
 
+    emptyField() {
+        
+        let tiles = document.querySelector('#tiles');
+        while (tiles.firstChild) {
+            tiles.removeChild(tiles.firstChild);
+        }
+
+    }
+    
     drawField() {
 
         for ( let i = 0; i < 10; i++ ) {
@@ -21,6 +30,7 @@ class terrainView {
         // temp
         
     }
+
 
     holderAddEventListener( holder ) {
         holder.addEventListener("drop", this.holderDrop);
@@ -51,6 +61,7 @@ class terrainView {
         event.target.classList.remove("holder-hover");
     }
 
+
     drawTerrain( climate ) {
 
         for( let i = 0; i < 10; i++ ) {
@@ -68,7 +79,7 @@ class terrainView {
             }   
         }
 
-        document.querySelector('span.weather').innerHTML = climate.climate;
+        document.querySelector('span.weather').innerHTML = climate['reference city'];
 
     }
 

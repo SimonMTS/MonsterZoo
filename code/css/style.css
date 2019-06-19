@@ -11,16 +11,49 @@ div.full-height-box {
     overflow: hidden;
 }
 
-.bg-mat-50 { background-color: #E0F2F1; }
-.bg-mat-100 { background-color: #B2DFDB; }
-.bg-mat-200 { background-color: #80CBC4; }
-.bg-mat-300 { background-color: #4DB6AC; }
-.bg-mat-400 { background-color: #26A69A; }
-.bg-mat-500 { background-color: #009688; }
-.bg-mat-600 { background-color: #00897B; }
-.bg-mat-700 { background-color: #00796B; }
-.bg-mat-800 { background-color: #00695C; }
-.bg-mat-900 { background-color: #004D40; }
+.jungle .bg-mat-50                                  { background-color: #E8F5E9; }
+.jungle .bg-mat-100                                 { background-color: #C8E6C9; }
+.jungle .bg-mat-200                                 { background-color: #A5D6A7; }
+.jungle .bg-mat-300                                 { background-color: #81C784; }
+.jungle .bg-mat-400                                 { background-color: #66BB6A; }
+.jungle .bg-mat-500                                 { background-color: #4CAF50; }
+.jungle .bg-mat-600                                 { background-color: #43A047; }
+.jungle .bg-mat-700                                 { background-color: #388E3C; }
+.jungle .bg-mat-800, .jungle div.holder.terrain     { background-color: #2E7D32; }
+.jungle .bg-mat-900                                 { background-color: #1B5E20; }
+.jungle .jungle-btn { background-color: #4CAF50; }
+.jungle .sjahari-btn { background-color: #fff; }
+.jungle .icepole-btn { background-color: #fff; }
+
+.sjahari .bg-mat-50                                  { background-color: #FFF3E0; }
+.sjahari .bg-mat-100                                 { background-color: #FFE0B2; }
+.sjahari .bg-mat-200                                 { background-color: #FFCC80; }
+.sjahari .bg-mat-300                                 { background-color: #FFB74D; }
+.sjahari .bg-mat-400                                 { background-color: #FFA726; }
+.sjahari .bg-mat-500                                 { background-color: #FF9800; }
+.sjahari .bg-mat-600                                 { background-color: #FB8C00; }
+.sjahari .bg-mat-700                                 { background-color: #F57C00; }
+.sjahari .bg-mat-800, .sjahari div.holder.terrain    { background-color: #EF6C00; }
+.sjahari .bg-mat-900                                 { background-color: #E65100; }
+.sjahari .jungle-btn { background-color: #fff; }
+.sjahari .sjahari-btn { background-color: #FF9800; }
+.sjahari .icepole-btn { background-color: #fff; }
+
+.icepole .bg-mat-50                                  { background-color: #EFEBE9; }
+.icepole .bg-mat-100                                 { background-color: #D7CCC8; }
+.icepole .bg-mat-200                                 { background-color: #BCAAA4; }
+.icepole .bg-mat-300                                 { background-color: #A1887F; }
+.icepole .bg-mat-400                                 { background-color: #8D6E63; }
+.icepole .bg-mat-500                                 { background-color: #795548; }
+.icepole .bg-mat-600                                 { background-color: #6D4C41; }
+.icepole .bg-mat-700                                 { background-color: #5D4037; }
+.icepole .bg-mat-800, .icepole div.holder.terrain    { background-color: #4E342E; }
+.icepole .bg-mat-900                                 { background-color: #3E2723; }
+.icepole .jungle-btn { background-color: #fff; }
+.icepole .sjahari-btn { background-color: #fff; }
+.icepole .icepole-btn { background-color: #795548; color: #fff; }
+
+
 
 div#tiles {
     display: flex;
@@ -52,9 +85,6 @@ div.holder.design {
     padding: 15px;
 }
 
-div.holder.terrain {
-    background-color: #00695C;
-}
 div.holder.terrain.holder-hover {
     background-color: #F44336;
 }
@@ -74,7 +104,6 @@ div.monster {
     -o-background-size: cover;
     background-size: cover;
 
-    background-color: #4CAF50;
     border-radius: 5px;
 }
 
