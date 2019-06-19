@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- JavaScript -->
+		<script type="text/javascript" defer src="main.js"></script>
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="style.css">
+
+		<!-- Other -->
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>webs3</title>
+	</head>
+	<body>
+
+		<h1>webs3</h1>
+		
+		<div id="tiles"></div>
+
+		<div id="draggables">
+
+			<div class="holder" ondrop="drop(event, this)" ondragover="allowDrop(event)"> 
+				<div class="draggable" id="d0" ondragstart="dragStart(event, this)" draggable="true"></div> 
+			</div>
+
+			<div class="holder" ondrop="drop(event, this)" ondragover="allowDrop(event)"> 
+				<div class="draggable" id="d1" ondragstart="dragStart(event, this)" draggable="true"></div> 
+			</div>
+
+			<div class="holder" ondrop="drop(event, this)" ondragover="allowDrop(event)"> 
+				<div class="draggable" id="d2" ondragstart="dragStart(event, this)" draggable="true"></div> 
+			</div>
+			
+			<div class="holder" ondrop="drop(event, this)" ondragover="allowDrop(event)"> 
+				<div class="draggable" id="d3" ondragstart="dragStart(event, this)" draggable="true"></div> 
+			</div>
+
+			<div class="holder" ondrop="drop(event, this)" ondragover="allowDrop(event)"> 
+				<div class="draggable" id="d4" ondragstart="dragStart(event, this)" draggable="true"></div> 
+			</div>
+
+		</div>		
+
+    </body>
+</html>
