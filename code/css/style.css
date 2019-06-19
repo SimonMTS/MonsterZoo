@@ -21,3 +21,64 @@ div.full-height-box {
 .bg-mat-700 { background-color: #00796B; }
 .bg-mat-800 { background-color: #00695C; }
 .bg-mat-900 { background-color: #004D40; }
+
+div#tiles {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+}
+
+div.holder {
+    height: calc( ( 100vh - 60px - 54px - ( 15px * 11 ) ) / 10 );
+    flex: 0 0 calc(10% - 15px);
+    max-width: calc(10% - 15px);
+    margin: 15px 15px 0px 0px;
+
+    border-radius: 5px;
+    padding: 5px;
+}
+div.holder.holder-hover {
+    background-color: #4CAF50;
+}
+
+div.holder.design {
+    height: 200px;
+    width: 200px;
+    margin: 15px auto;
+    flex: none;
+    max-width: none;
+
+    border-radius: 5px;
+    padding: 15px;
+}
+
+div.holder.terrain {
+    background-color: #00695C;
+}
+div.holder.terrain.holder-hover {
+    background-color: #F44336;
+}
+
+div.monster {
+    height: calc( ( ( 100vh - 60px - 54px - ( 15px * 11 ) ) / 10 ) - 10px );
+    width: 100%;
+
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+
+    background: url(https://placekitten.com/200/200) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    background-color: #4CAF50;
+    border-radius: 5px;
+}
+
+div.holder.design div.monster {
+    height: 170px;
+    width: 170px;
+}

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<!-- JavaScript -->
-		<script type="text/javascript" src="http://monster.zoo/js/script.js"></script>
+		<script type="text/javascript" defer src="http://monster.zoo/js/dist/main.js"></script>
 
 		<!-- CSS -->
 		<link rel="stylesheet" href="http://monster.zoo/css/bootstrap.min.css">
@@ -28,6 +28,10 @@
                                 <h2>Monster Configurator</h2>
                             </div>
 
+                            <div class="holder design bg-mat-100" id="hdesign"> 
+                                <div class="monster" id="m0" draggable="true"></div> 
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -37,13 +41,24 @@
                         <div class="row">
 
                             <div class="col-12 bg-mat-200 pt-2">
-                                <h2 class="float-left mr-4">Region:</h2>
+                                <h2 class="float-left mr-3">Region:</h2>
                                 
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-success">Jungle</button>
+                                    <button type="button" class="btn btn-info">Jungle</button>
                                     <button type="button" class="btn btn-secondary">Woestijn</button>
                                     <button type="button" class="btn btn-secondary">Noordpool</button>
                                 </div>
+
+                                <h2 class="float-right">
+                                    Weather: <span class="badge bg-mat-600 text-light weather">koud</span>
+                                </h2>
+                            </div>
+    
+                        </div>
+                        <div class="row">
+
+                            <div class="col-12">
+                                <div id="tiles"></div>
                             </div>
     
                         </div>

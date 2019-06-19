@@ -17,6 +17,7 @@
     }
 
     function dragStart(event, element) {
+        console.log('ondragstart');
         event.dataTransfer.setData("draggable", event.target.id);
         element.style.transform = 'translate(0, 0)';
         event.dataTransfer.setDragImage(element, element.offsetWidth, element.offsetHeight);
