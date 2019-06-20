@@ -5,3 +5,6 @@
 
     let monsterController = require('./controllers/monsterController.js');
 
+    terrainController.setMonsterController( monsterController );
+
+    terrainController.setInitClimate();

@@ -2,15 +2,15 @@
 <html lang="en">
 	<head>
 		<!-- JavaScript -->
-		<script type="text/javascript" defer src="http://monster.zoo/js/dist/main.js"></script>
+		<script type="text/javascript" defer src="/js/dist/main.js"></script>
 
 		<!-- CSS -->
-		<link rel="stylesheet" href="http://monster.zoo/css/bootstrap.min.css">
-		<link rel="stylesheet" href="http://monster.zoo/css/style.css">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/style.css">
 
 		<!-- Other -->
-		<link rel="shortcut icon" href="http://monster.zoo/assets/favicon.ico">
-		<link rel="icon" href="http://monster.zoo/assets/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="/assets/favicon.ico">
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
 
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,9 +28,17 @@
                                 <h2>Monster Configurator</h2>
                             </div>
 
-                            <div class="holder design bg-mat-100" id="hdesign"> 
-                                <div class="monster" id="m0" draggable="true"></div> 
+                        </div>
+                        <div class="row">
+
+                            <div class="col-12 pt-2">
+                                <button type="button" id="createMonster" class="btn btn-light bg-mat-500 btn-lg btn-block mt-1">
+                                    Create new Monster
+                                </button>
+
+                                <div class="holder design bg-mat-100" id="hdesign"></div>
                             </div>
+
 
                         </div>
                     </div>
@@ -44,13 +52,13 @@
                                 <h2 class="float-left mr-3">Region:</h2>
                                 
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn jungle-btn">Jungle</button>
-                                    <button type="button" class="btn sjahari-btn">Sjahari</button>
-                                    <button type="button" class="btn icepole-btn">IcePole</button>
+                                    <button type="button" class="btn btn-light jungle-btn">Jungle</button>
+                                    <button type="button" class="btn btn-light sjahari-btn">Sjahari</button>
+                                    <button type="button" class="btn btn-light icepole-btn">IcePole</button>
                                 </div>
 
                                 <h2 class="float-right">
-                                    Weather: <span class="badge bg-mat-600 text-light weather">koud</span>
+                                    Weather: <span class="badge bg-mat-600 text-light weather">...</span>
                                 </h2>
                             </div>
     

@@ -7,6 +7,11 @@ class terrainView {
             tiles.removeChild(tiles.firstChild);
         }
 
+        let designer = document.querySelector('#hdesign');
+        while (designer.firstChild) {
+            designer.removeChild(designer.firstChild);
+        }
+
     }
     
     drawField() {
@@ -24,10 +29,8 @@ class terrainView {
             }
         }
 
-        // temp for Monster Configurator
-            let designHolder = document.querySelector('div.holder.design');
-            this.holderAddEventListener( designHolder );
-        // temp
+        let designHolder = document.querySelector('div.holder.design');
+        this.holderAddEventListener( designHolder );
         
     }
 
@@ -79,7 +82,87 @@ class terrainView {
             }   
         }
 
-        document.querySelector('span.weather').innerHTML = climate['reference city'];
+        this.setClimateClass( climate.name );
+
+    }
+
+    setClimateClass( name ) {
+        let outer = document.querySelector('div.container-fluid.outer');
+        outer.classList.remove('jungle');
+        outer.classList.remove('sjahari');
+        outer.classList.remove('icepole');
+
+        outer.classList.add( name.toLowerCase() );
+    }
+
+    setClimateChangeEventListeners( controller ) {
+        
+        document.querySelector('button.jungle-btn').addEventListener("click", function(){
+            controller.setClimate( 'jungle' );
+        });
+        document.querySelector('button.sjahari-btn').addEventListener("click", function(){
+            controller.setClimate( 'sjahari' );
+        });
+        document.querySelector('button.icepole-btn').addEventListener("click", function(){
+            controller.setClimate( 'icepole' );
+        });
+
+    }
+
+    setWeatherBadge( weather ) {
+
+        document.querySelector('span.badge.weather').innerHTML = weather;
+
+    }
+
+    getHolderPosition( x, y ) {
+
+        if ( x == 'designer' && y == 'designer' ) {
+            return document.querySelector('#hdesign');
+        } else {
+            return document.querySelector('#h'+x+'-'+y);
+        }
+
+    }
+
+    setMonsterPositionEventListeners( controller, climate ) {
+
+        for( let i = 0; i < 10; i++ ) {
+            for( let j = 0; j < 10; j++ ) {
+                if ( climate.grid[i].Columns[j] == 0 ) {
+                    let holder = document.querySelector('#h'+i+'-'+j);
+                    
+                    holder.addEventListener("drop", function(){
+                        let data = event.dataTransfer.getData("draggable");
+        
+                        if ( event.target.id.charAt(0) == 'h' ) {
+                            event.target.appendChild(document.getElementById(data));
+                            event.target.classList.remove("holder-hover");
+
+                            controller.monsterChangedPosition(
+                                data, 
+                                event.target.id.charAt(1), event.target.id.charAt(3)
+                            );
+                        }
+                    });
+                }
+            }
+        }
+
+        let designHolder = document.querySelector('div.holder.design')
+        designHolder.addEventListener("drop", function(){
+            let data = event.dataTransfer.getData("draggable");
+
+            if ( event.target.id.charAt(0) == 'h' ) {
+                event.target.appendChild(document.getElementById(data));
+                event.target.classList.remove("holder-hover");
+
+                controller.monsterChangedPosition(
+                    data, 
+                    'designer', 'designer'
+                );
+            }
+        });
 
     }
 

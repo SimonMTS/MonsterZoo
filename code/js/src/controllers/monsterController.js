@@ -1,24 +1,46 @@
 let monsterModel = require('../models/monsterModel.js'),
-    monsterView = require('../views/monsterView.js');
+    monsterView = require('../views/monsterView.js'),
+    terrainModel = require('../models/terrainModel.js');
 
 class monsterController {
 
     constructor() {
-        
+
+        // nononono temp todo
+        let controller = this;
+        document.querySelector('button#createMonster').addEventListener('click', function(){
+            return controller.createNewMonster();
+        });
+
+    }
+
+    addMonstersToTerrain( climate ) {
+
+        let monsterLocations = monsterModel.getMonsterLocations( climate );
+
+        monsterView.drawMonsters( monsterLocations );
+
         this.addMonsterEventListeners();
-        
+
     }
 
     addMonsterEventListeners() {
 
+        // nononono temp todo
         let monsters = document.querySelectorAll('div.monster');
         for ( let i = 0; i < monsters.length; i++ ) {
 
-            monsters[i].addEventListener('click', this.monsterClick);
-
-            monsters[i].addEventListener('dragstart', this.monsterDragstart);
+            this.addMonsterEventListener( monsters[i] );
 
         }
+
+    }
+
+    addMonsterEventListener( monster ) {
+
+        monster.addEventListener('click', this.monsterClick);
+
+        monster.addEventListener('dragstart', this.monsterDragstart);
 
     }
 
@@ -31,6 +53,24 @@ class monsterController {
 
     monsterClick( event ) {
         console.log('clicked: '+this.id);
+    }
+
+    createNewMonster() {
+
+        if ( monsterModel.getMonsterInDesigner() == undefined ) {
+
+            monsterModel.addMonsterToLocation( 
+                terrainModel.getCurrentClimate(),
+                monsterModel.generateMonsterID(),
+                'designer', 'designer', 
+                {} 
+            );
+    
+            let climate = terrainModel.getClimateByName( terrainModel.getCurrentClimate() );
+            this.addMonstersToTerrain( climate );
+
+        }
+
     }
 
 }
