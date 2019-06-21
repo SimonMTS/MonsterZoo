@@ -5,6 +5,7 @@ class configuratorView {
         this.randomNames = [ 'aamon', 'abaddon', 'abezethibou', 'abraxas', 'abyzou', 'adramelech', 'aeshma', 'agaliarept', 'agares', 'agiel', 'agrat', 'ahriman', 'aim', 'akoman', 'akvan', 'ala', 'alal', 'alastor', 'allocer', 'alloces', 'allu', 'alu', 'amaymon', 'amdusias', 'amon', 'amy', 'anamalech', 'ancitif', 'andhaka', 'andras', 'andrealphus', 'andromalius', 'antichrist', 'anzu', 'apollyon', 'archon', 'armaros', 'arunasura', 'asag', 'asakku', 'asbel', 'asmodai', 'asmodeus', 'astaroth', 'asura', 'azazel', 'baal', 'babi', 'bael', 'bakasura', 'balam', 'balberith', 'banshee', 'baphomet', 'barbas', 'barbatos', 'barong', 'bathin', 'bathym', 'beelzebub', 'behemoth', 'beherit', 'beleth', 'belial', 'belphegor', 'berith', 'bhoot', 'bhuta', 'bifrons', 'boruta', 'botis', 'buer', 'bukavac', 'bune', 'bushyasta', 'caacrinolaas', 'caassimolar', 'caim', 'camio', 'canio', 'cerbere', 'charun', 'chax', 'chemosh', 'choronzon', 'cimeies', 'cimejes', 'classyalabolas', 'corson', 'crocell', 'crocell', 'culsu', 'daeva', 'dagon', 'dahak', 'dahaka', 'dajjal', 'dajjal', 'danjal', 'dantalion', 'decarabia', 'demiurge', 'demogorgon', 'devil', 'drekavac', 'dzoavits', 'eblis', 'eisheth', 'eligos', 'flauros', 'flavros', 'focalor', 'foraii', 'foras', 'forcas', 'forneus', 'forras', 'furcas', 'furfur', 'gaap', 'gaderel', 'gaki', 'gamigin', 'ghoul', 'glassialabolis', 'gomory', 'gorgon', 'gremory', 'grigori', 'gualichu', 'guayota', 'gusion', 'gusoin', 'gusoyn', 'haagenti', 'haborym', 'halphas', 'hauras', 'haures', 'havres', 'ifrit', 'incubus', 'ipes', 'ipos', 'jikininki', 'jinn', 'kabandha', 'kabhanda', 'kali', 'kasadya', 'kimaris', 'kokabiel', 'krampus', 'kroni', 'kumbhakarna', 'lechies', 'legion', 'lempo', 'leraie', 'leraje', 'leviathan', 'leyak', 'lili', 'lilim', 'lilin', 'lilin', 'lilith', 'lucifer', 'malaphar', 'malephar', 'malphas', 'malthus', 'mammon', 'mara', 'marax', 'marchosias', 'maricha', 'marthim', 'mastema', 'mathim', 'mephistopheles', 'merihem', 'moloch', 'morax', 'morpheus', 'murmur', 'naamah', 'naberius', 'naberus', 'namtar', 'nero', 'ninurta', 'onoskelis', 'orcus', 'ordog', 'orias', 'oriax', 'orobas', 'ose', 'paimon', 'pazuzu', 'pelesit', 'penemue', 'phenex', 'pithius', 'pocong', 'pontianak', 'preta', 'procell', 'pruflas', 'puloman', 'rahab', 'rakshasa', 'rangda', 'raum', 'ravana', 'ronove', 'rusalka', 'sabnock', 'saleos', 'samael', 'satan', 'seir', 'semyaz', 'shax', 'shedim', 'sitri', 'solas', 'sthenno', 'stolas', 'suanggi', 'succubus', 'surgat', 'tannin', 'toyol', 'tuchulcha', 'ukobach', 'valac', 'valefar', 'vanth', 'vapula', 'vassago', 'vepar', 'vine', 'wendigo', 'xaphan', 'xezbeth', 'yeqon', 'yeterel', 'zagan', 'zahhak', 'zepar', 'ziminiar', 'zu' ];
 
         this.inputFields = {
+            "monsterID":        document.querySelector('input#monsterID'),
             "typeOfMonster":    document.querySelector('div#typeOfMonster select'),
             "monsterName":      document.querySelector('div#monsterName input'),
             "numberOfArms":     document.querySelector('div#numberOfArms select'),
@@ -14,23 +15,24 @@ class configuratorView {
             "typeOfFur":        document.querySelector('div#typeOfFur select'),
             "monsterColor":     document.querySelector('div#monsterColor select'),
             "monsterCanFly":    document.querySelector('div#monsterCanFly input'),
-            "monsterCanSwim":    document.querySelector('div#monsterCanSwim input')
+            "monsterCanSwim":   document.querySelector('div#monsterCanSwim input')
         };
     }
 
     getValuesAsObject() {
 
         let obj = {
-            "monsterName": this.inputFields['monsterName'].value,
-            "typeOfMonster": this.inputFields['typeOfMonster'].value,
-            "numberOfArms": parseInt(this.inputFields['numberOfArms'].value),
-            "typeOfArm": this.inputFields['typeOfArm'].value,
-            "numberOfLegs": parseInt(this.inputFields['numberOfLegs'].value),
-            "numberOfEyes": parseInt(this.inputFields['numberOfEyes'].value),
-            "typeOfFur": this.inputFields['typeOfFur'].value,
-            "monsterColor": this.inputFields['monsterColor'].value,
-            "monsterCanFly": this.inputFields['monsterCanFly'].checked,
-            "monsterCanSwim": this.inputFields['monsterCanSwim'].checked
+            "monsterID":        this.inputFields['monsterID'].value,
+            "monsterName":      this.inputFields['monsterName'].value,
+            "typeOfMonster":    this.inputFields['typeOfMonster'].value,
+            "numberOfArms":     parseInt(this.inputFields['numberOfArms'].value),
+            "typeOfArm":        this.inputFields['typeOfArm'].value,
+            "numberOfLegs":     parseInt(this.inputFields['numberOfLegs'].value),
+            "numberOfEyes":     parseInt(this.inputFields['numberOfEyes'].value),
+            "typeOfFur":        this.inputFields['typeOfFur'].value,
+            "monsterColor":     this.inputFields['monsterColor'].value,
+            "monsterCanFly":    this.inputFields['monsterCanFly'].checked,
+            "monsterCanSwim":   this.inputFields['monsterCanSwim'].checked
         };
 
         return obj;
@@ -57,27 +59,58 @@ class configuratorView {
 
     loadMonsterData( monster, controller ) {
 
-        let properties = controller.monsterController.retrieveMonsterProperties( monster.id );
-
+        
+        let properties = controller.retrieveMonsterProperties( monster.id );
+        
+        this.inputFields['monsterID'].value = properties.monsterID;
         this.inputFields['monsterName'].value = properties.monsterName;
         this.inputFields['typeOfMonster'].value = properties.typeOfMonster;
-        this.inputFields['numberOfArms'].value = properties.numberOfArms;
-        this.inputFields['typeOfArm'].value = properties.typeOfArm;
-        this.inputFields['numberOfLegs'].value = properties.numberOfLegs;
-        this.inputFields['numberOfEyes'].value = properties.numberOfEyes;
-        this.inputFields['typeOfFur'].value = properties.typeOfFur;
-        this.inputFields['monsterColor'].value = properties.monsterColor;
+
+
+        var option = document.createElement("option");
+        option.text = ''+ properties.numberOfArms;
+        option.selected = 'selected';
+        this.inputFields['numberOfArms'].add( option );
+
+        var option = document.createElement("option");
+        option.text = ''+ properties.typeOfArm;
+        option.selected = 'selected';
+        this.inputFields['typeOfArm'].add( option );
+
+        var option = document.createElement("option");
+        option.text = ''+ properties.numberOfLegs;
+        option.selected = 'selected';
+        this.inputFields['numberOfLegs'].add( option );
+
+        var option = document.createElement("option");
+        option.text = ''+ properties.numberOfEyes;
+        option.selected = 'selected';
+        this.inputFields['numberOfEyes'].add( option );
+
+        var option = document.createElement("option");
+        option.text = ''+ properties.typeOfFur;
+        option.selected = 'selected';
+        this.inputFields['typeOfFur'].add( option );
+
+        var option = document.createElement("option");
+        option.text = ''+ properties.monsterColor;
+        option.selected = 'selected';
+        this.inputFields['monsterColor'].add( option );
+
+
         this.inputFields['monsterCanFly'].checked = properties.monsterCanFly;
         this.inputFields['monsterCanSwim'].checked = properties.monsterCanSwim;
 
-        this.validateConfiguratorFields();
+
+        this.validateConfiguratorFields( controller );
 
     }
 
-    generateNewMonster() {
-
+    generateNewMonster( id, controller ) {
+        
         let randomNumber = Math.floor(Math.random() * 4);
 
+        this.inputFields['monsterID'].value = id;
         this.inputFields['monsterName'].value = '';
         this.inputFields['typeOfMonster'].value = this.inputFields['typeOfMonster'].options[ randomNumber ].value;
         this.inputFields['numberOfArms'].value = false;
@@ -89,29 +122,29 @@ class configuratorView {
         this.inputFields['monsterCanFly'].checked = false;
         this.inputFields['monsterCanSwim'].checked = false;
 
-        this.validateConfiguratorFields();
+        this.validateConfiguratorFields( controller );
 
     }
 
 
-    setConfiguratorEventListeners() {
+    setConfiguratorEventListeners( controller ) {
 
         let thisView = this;
-        document.querySelector('div#typeOfMonster select'   ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields() });
-        document.querySelector('div#monsterName input'      ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields() });
-        document.querySelector('div#numberOfArms select'    ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields() });
-        document.querySelector('div#typeOfArm select'       ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields() });
-        document.querySelector('div#numberOfLegs select'    ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields() });
-        document.querySelector('div#numberOfEyes select'    ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields() });
-        document.querySelector('div#typeOfFur select'       ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields() });
-        document.querySelector('div#monsterColor select'    ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields() });
-        document.querySelector('div#monsterCanFly input'    ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields() });
-        document.querySelector('div#monsterCanSwim input'   ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields() });
+        document.querySelector('div#typeOfMonster select'   ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ) });
+        document.querySelector('div#monsterName input'      ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ) });
+        document.querySelector('div#numberOfArms select'    ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ) });
+        document.querySelector('div#typeOfArm select'       ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ) });
+        document.querySelector('div#numberOfLegs select'    ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ) });
+        document.querySelector('div#numberOfEyes select'    ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ) });
+        document.querySelector('div#typeOfFur select'       ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ) });
+        document.querySelector('div#monsterColor select'    ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ) });
+        document.querySelector('div#monsterCanFly input'    ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ) });
+        document.querySelector('div#monsterCanSwim input'   ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ) });
 
     }
 
-    validateConfiguratorFields() {
-
+    validateConfiguratorFields( controller ) {
+        
         this.validateMonsterName( this.inputFields );
         this.validateNumberOfArms( this.inputFields );
         this.validateTypeOfArm( this.inputFields );
@@ -121,6 +154,8 @@ class configuratorView {
         this.validateMonsterColor( this.inputFields );
         this.validateMonsterCanFly( this.inputFields );
         this.validateMonsterCanSwim( this.inputFields );
+        
+        controller.updateMonsterProperties( this.inputFields['monsterID'].value, this.getValuesAsObject() );
 
     }
 
@@ -132,9 +167,9 @@ class configuratorView {
 
         let typeOfMonster = inputFields['typeOfMonster'];
         if ( 'water' == typeOfMonster.options[ typeOfMonster.selectedIndex ].value.toLowerCase() ) {
-            possibleValues = [ 1, 2, 3, 4, 5, 6, 7, 8 ];
+            possibleValues = [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ];
         } else if ( 'fire' == typeOfMonster.options[ typeOfMonster.selectedIndex ].value.toLowerCase() ) {
-            possibleValues = [ 1, 2, 3, 4, 5, 6 ];
+            possibleValues = [ 0, 1, 2, 3, 4, 5, 6 ];
         } else if ( 'earth' == typeOfMonster.options[ typeOfMonster.selectedIndex ].value.toLowerCase() ) {
             possibleValues = [ 2 ];
         } else if ( 'wind' == typeOfMonster.options[ typeOfMonster.selectedIndex ].value.toLowerCase() ) {
@@ -210,7 +245,7 @@ class configuratorView {
             'water' == typeOfMonster.options[ typeOfMonster.selectedIndex ].value.toLowerCase() && 
             numberOfArms.options[ numberOfArms.selectedIndex ].value <= 4
         ) {
-            possibleValues = [ 1, 2, 3, 4 ];
+            possibleValues = [ 0, 1, 2, 3, 4 ];
         } else if ( 
             'water' == typeOfMonster.options[ typeOfMonster.selectedIndex ].value.toLowerCase() && 
             numberOfArms.options[ numberOfArms.selectedIndex ].value > 4
@@ -259,9 +294,9 @@ class configuratorView {
 
         let typeOfMonster = inputFields['typeOfMonster'];
         if ( 'water' == typeOfMonster.options[ typeOfMonster.selectedIndex ].value.toLowerCase() ) {
-            possibleValues = [ 1, 2, 3, 4, 5, 6, 7, 8 ];
+            possibleValues = [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ];
         } else if ( 'fire' == typeOfMonster.options[ typeOfMonster.selectedIndex ].value.toLowerCase() ) {
-            possibleValues = [ 1, 2, 3, 4 ];
+            possibleValues = [ 0, 1, 2, 3, 4 ];
         } else if ( 'earth' == typeOfMonster.options[ typeOfMonster.selectedIndex ].value.toLowerCase() ) {
             possibleValues = [ 2 ];
         } else if ( 'wind' == typeOfMonster.options[ typeOfMonster.selectedIndex ].value.toLowerCase() ) {

@@ -102,7 +102,7 @@ class monsterModel {
     }
 
     saveMonsterProperties( id, properties ) {
-
+        
         localStorage.setItem(id, JSON.stringify( properties ));
 
     }

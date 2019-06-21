@@ -16,12 +16,24 @@ class terrainView {
     
     drawField( monsterInDesigner ) {
 
+        document.querySelector('body').addEventListener("dragstart", function(e){ 
+
+            if ( !e.target.id || e.target.id.charAt(0) != 'm' ) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                return false;
+            }
+
+        });
+
         for ( let i = 0; i < 10; i++ ) {
             for ( let j = 0; j < 10; j++ ) {
 
                 let holder = document.createElement('div');
                 holder.setAttribute('class', 'holder bg-mat-100');
                 holder.setAttribute('id', 'h'+i+'-'+j);
+
                 document.querySelector('#tiles').appendChild(holder);
 
                 this.holderAddEventListener( holder );
@@ -208,7 +220,7 @@ class terrainView {
             document.querySelector('button#createMonster').style.display = "none";
             document.querySelector('div.creation').style.display = "block";
             
-            return controller.createNewMonster();
+            controller.createNewMonster();
         });
 
     }

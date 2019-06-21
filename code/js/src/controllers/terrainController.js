@@ -14,10 +14,12 @@ class terrainController {
 
         terrainView.setWeatherEventListeners( this );
 
-        configuratorView.setConfiguratorEventListeners();
-        configuratorView.validateConfiguratorFields();
-
-        configuratorView.getValuesAsObject(); // todo temp remove
+        configuratorView.setConfiguratorEventListeners( this.monsterController );
+        
+        let monsterInDesigner = monsterModel.getMonsterInDesigner();
+        if ( monsterInDesigner != false ) {
+            configuratorView.loadMonsterData( monsterInDesigner, this.monsterController );
+        }
     
     }
 
@@ -58,7 +60,7 @@ class terrainController {
 
     monsterChangedPosition( id, x, y ) {
         monsterModel.moveMonsterToLocation( terrainModel.getCurrentClimate(), id, x, y );
-        configuratorView.updateConfigurator( monsterModel.getMonsterInDesigner(), this );
+        configuratorView.updateConfigurator( monsterModel.getMonsterInDesigner(), this.monsterController );
     }
 
 }

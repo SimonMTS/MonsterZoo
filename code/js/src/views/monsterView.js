@@ -25,9 +25,9 @@ class monsterView {
             let holder = terrainView.getHolderPosition( locations[i].x, locations[i].y );
 
             if ( holder.childElementCount > 0 ) {
-                continue;
+                holder.removeChild(holder.firstChild);
             }
-
+            
             this.drawMonster( holder, controller, {
                 'id': locations[i].id
             });
@@ -57,31 +57,22 @@ class monsterView {
 
         let thisView = this;
         monster.addEventListener('dragstart', function(e) {
-            thisView.monsterDragstart(e, controller);
+            thisView.monsterDragstart(e);
         });
 
     }
 
-    monsterDragstart( event, controller ) {
-        console.log('parent-drag');
+    monsterDragstart( event ) {
         
         event.dataTransfer.setData("draggable", event.target.id);
 
         event.target.style.transform = 'translate(0, 0)';
         event.dataTransfer.setDragImage(event.target, event.target.offsetWidth/2, event.target.offsetHeight/2);
-
-        if ( event.path[1].id == 'hdesign' ) {
-
-            controller.updateMonsterProperties( event.target.id, configuratorView.getValuesAsObject() );
-
-        }
-
-        event.stopPropagation();
         
     }
 
     monsterClick( event, controller ) {
-        
+
         console.log( controller.retrieveMonsterProperties( event.target.id ) );
 
     }

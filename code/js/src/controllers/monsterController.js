@@ -15,7 +15,6 @@ class monsterController {
     addMonstersToTerrain( climate ) {
 
         let monsterLocations = monsterModel.getMonsterLocations( climate );
-
         monsterView.drawMonsters( monsterLocations, this );
 
     }
@@ -24,9 +23,11 @@ class monsterController {
 
         if ( monsterModel.getMonsterInDesigner() === false ) {
 
-            monsterModel.addMonsterToLocation( monsterModel.generateMonsterID() );
+            let id = monsterModel.generateMonsterID();
+            monsterModel.addMonsterToLocation( id );
 
-            configuratorView.generateNewMonster();
+            configuratorView.generateNewMonster( id, this );
+            this.updateMonsterProperties( id, configuratorView.getValuesAsObject() );
     
             let climate = terrainModel.getClimateByName( terrainModel.getCurrentClimate() );
             this.addMonstersToTerrain( climate );
@@ -38,6 +39,10 @@ class monsterController {
     updateMonsterProperties( id, properties ) {
 
         monsterModel.saveMonsterProperties( id, properties );
+
+        let climate = terrainModel.getClimateByName( terrainModel.getCurrentClimate() );
+        let monsterLocations = monsterModel.getMonsterLocations( climate );
+        monsterView.drawMonsters( monsterLocations, this );
 
     }
 
