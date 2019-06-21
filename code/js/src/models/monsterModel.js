@@ -24,13 +24,11 @@ class monsterModel {
 
     getMonsterInDesigner() {
 
-        let currentClimate = terrainModel.getCurrentClimate();
+        if ( !this.locations.designer[0] ) {
+            return false;
+        }
 
-        let monster = this.locations[ currentClimate ].find(function(element){
-            return element.x == 'designer' && element.y == 'designer';
-        });
-
-        return monster;
+        return this.locations.designer[0];
 
     }
 
@@ -40,12 +38,23 @@ class monsterModel {
 
     addMonsterToLocation( climate, id, x, y, properties ) {
         
-        this.locations[climate].push({
-            'id': id,
-            'x': x,
-            'y': y,
-            'properties': properties
-        });
+        if ( x == 'designer' && y == 'designer' ) {
+
+            this.locations.designer.push({
+                'id': id,
+                'x': x,
+                'y': y
+            });
+
+        } else {
+
+            this.locations[climate].push({
+                'id': id,
+                'x': x,
+                'y': y
+            });
+
+        }
 
         this.saveLocations();
 
@@ -53,19 +62,43 @@ class monsterModel {
     
     moveMonsterToLocation( climate, id, x, y ) {
         
-        let monster = this.locations[climate].find(function(element){
+        let climateLocations = this.locations[climate];
+        let designerLocations = this.locations.designer;
+        let visableMonsters = climateLocations.concat( designerLocations );
+
+        let monster = visableMonsters.find(function(element){
             return element.id == id;
         });
 
         let index = this.locations[climate].indexOf(monster);
-        this.locations[climate].splice(index, 1);
+        if ( index >= 0 ) {
 
-        this.locations[climate].push({
-            'id': monster.id,
-            'x': x,
-            'y': y,
-            'properties': monster.properties
-        });
+            this.locations[climate].splice(index, 1);
+
+        } else {
+
+            this.locations.designer = [];
+
+        }
+
+        if ( !(x == 'designer' && y == 'designer') ) {
+            
+            this.locations[climate].push({
+                'id': monster.id,
+                'x': x,
+                'y': y
+            });
+
+        } else {
+
+            this.locations.designer.push({
+                'id': monster.id,
+                'x': x,
+                'y': y
+            });
+
+        }
+
 
         this.saveLocations();
 
@@ -73,7 +106,10 @@ class monsterModel {
 
     getMonsterLocations( climate ) {
 
-        return this.locations[climate.name.toLowerCase()];
+        let climateLocations = this.locations[climate.name.toLowerCase()];
+        let designerLocations = this.locations.designer;
+
+        return climateLocations.concat( designerLocations );
 
     }
 

@@ -36,22 +36,12 @@ class terrainView {
 
 
     holderAddEventListener( holder ) {
-        holder.addEventListener("drop", this.holderDrop);
         holder.addEventListener("dragover", this.holderDragOver);
 
         holder.addEventListener("dragenter", this.holderDragEnter);
         holder.addEventListener("dragleave", this.holderDragLeave);
     }
 
-    holderDrop( event ) {
-        event.preventDefault();
-        let data = event.dataTransfer.getData("draggable");
-        
-        if ( event.target.id.charAt(0) == 'h' ) {
-            event.target.appendChild(document.getElementById(data));
-            event.target.classList.remove("holder-hover");
-        }
-    }
 
     holderDragOver( event ) {
         event.preventDefault();
@@ -135,15 +125,16 @@ class terrainView {
                     holder.addEventListener("drop", function(){
                         let data = event.dataTransfer.getData("draggable");
         
-                        if ( event.target.id.charAt(0) == 'h' ) {
+                        if ( event.target.id.charAt(0) == 'h' && event.target.childElementCount == 0 ) {
                             event.target.appendChild(document.getElementById(data));
-                            event.target.classList.remove("holder-hover");
 
                             controller.monsterChangedPosition(
                                 data, 
                                 event.target.id.charAt(1), event.target.id.charAt(3)
                             );
                         }
+
+                        event.target.classList.remove("holder-hover");
                     });
                 }
             }
@@ -153,15 +144,16 @@ class terrainView {
         designHolder.addEventListener("drop", function(){
             let data = event.dataTransfer.getData("draggable");
 
-            if ( event.target.id.charAt(0) == 'h' ) {
+            if ( event.target.id.charAt(0) == 'h' && event.target.childElementCount == 0 ) {
                 event.target.appendChild(document.getElementById(data));
-                event.target.classList.remove("holder-hover");
 
                 controller.monsterChangedPosition(
                     data, 
                     'designer', 'designer'
                 );
             }
+
+            event.target.classList.remove("holder-hover");
         });
 
     }
