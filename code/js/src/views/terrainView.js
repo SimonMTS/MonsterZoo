@@ -14,7 +14,7 @@ class terrainView {
 
     }
     
-    drawField() {
+    drawField( monsterInDesigner ) {
 
         for ( let i = 0; i < 10; i++ ) {
             for ( let j = 0; j < 10; j++ ) {
@@ -29,8 +29,14 @@ class terrainView {
             }
         }
 
-        let designHolder = document.querySelector('div.holder.design');
+        let designHolder = document.querySelector('div#hdesign');
         this.holderAddEventListener( designHolder );
+
+        if ( monsterInDesigner ) {
+            document.querySelector('div.creation').style.display = "none";
+        } else {
+            document.querySelector('button#createMonster').style.display = "none";
+        }
         
     }
 
@@ -41,7 +47,6 @@ class terrainView {
         holder.addEventListener("dragenter", this.holderDragEnter);
         holder.addEventListener("dragleave", this.holderDragLeave);
     }
-
 
     holderDragOver( event ) {
         event.preventDefault();
@@ -57,8 +62,8 @@ class terrainView {
 
     drawTerrain( climate ) {
 
-        for( let i = 0; i < 10; i++ ) {
-            for( let j = 0; j < 10; j++ ) {
+        for ( let i = 0; i < 10; i++ ) {
+            for ( let j = 0; j < 10; j++ ) {
 
                 if ( climate.grid[i].Columns[j] == 1 ) {
                     let holder = document.querySelector('#h'+i+'-'+j);
@@ -75,6 +80,7 @@ class terrainView {
         this.setClimateClass( climate.name );
 
     }
+
 
     setClimateClass( name ) {
         let outer = document.querySelector('div.container-fluid.outer');
@@ -99,11 +105,44 @@ class terrainView {
 
     }
 
+
     setWeatherBadge( weather ) {
 
         document.querySelector('span.badge.weather').innerHTML = weather;
 
     }
+
+    setWeatherEventListeners( controller ) {
+
+        document.querySelector('span.badge.weather').addEventListener("click", function() {
+            
+            if ( document.querySelector('div.weather-dropdown').style.display == "block" ) {
+                document.querySelector('div.weather-dropdown').style.display = "none";
+            } else {
+                document.querySelector('div.weather-dropdown').style.display = "block";
+            }
+
+        });
+
+        this.setWeatherChangeEventListeners( controller );
+
+    }
+
+    setWeatherChangeEventListeners( controller ) {
+
+        let weatherSpans = document.querySelectorAll('div.weather-dropdown span');
+        for ( let i = 0; i < weatherSpans.length; i++ ) {
+            
+            weatherSpans[i].addEventListener("click", function() {
+                controller.setWeather( weatherSpans[i].innerHTML );
+
+                document.querySelector('div.weather-dropdown').style.display = "none";
+            });
+
+        }
+
+    }
+
 
     getHolderPosition( x, y ) {
 
@@ -117,43 +156,59 @@ class terrainView {
 
     setMonsterPositionEventListeners( controller, climate ) {
 
+        let thisView = this;
+
         for( let i = 0; i < 10; i++ ) {
             for( let j = 0; j < 10; j++ ) {
                 if ( climate.grid[i].Columns[j] == 0 ) {
                     let holder = document.querySelector('#h'+i+'-'+j);
                     
-                    holder.addEventListener("drop", function(){
-                        let data = event.dataTransfer.getData("draggable");
-        
-                        if ( event.target.id.charAt(0) == 'h' && event.target.childElementCount == 0 ) {
-                            event.target.appendChild(document.getElementById(data));
-
-                            controller.monsterChangedPosition(
-                                data, 
-                                event.target.id.charAt(1), event.target.id.charAt(3)
-                            );
-                        }
-
-                        event.target.classList.remove("holder-hover");
+                    holder.addEventListener("drop",  function(event) {
+                        thisView.monsterDropEventListener( event, 'xy', controller );
                     });
                 }
             }
         }
 
         let designHolder = document.querySelector('div.holder.design')
-        designHolder.addEventListener("drop", function(){
-            let data = event.dataTransfer.getData("draggable");
+        designHolder.addEventListener("drop",  function(event) {
+            thisView.monsterDropEventListener( event, 'designer', controller );
+        });
 
-            if ( event.target.id.charAt(0) == 'h' && event.target.childElementCount == 0 ) {
-                event.target.appendChild(document.getElementById(data));
+    }
 
-                controller.monsterChangedPosition(
-                    data, 
-                    'designer', 'designer'
-                );
+    monsterDropEventListener( event, position, controller ) {
+        let data = event.dataTransfer.getData("draggable");
+
+        if ( event.target.id.charAt(0) == 'h' && event.target.childElementCount == 0 ) {
+            event.target.appendChild(document.getElementById(data));
+
+            let x, y;
+            if ( position == 'designer' ) {
+                x = 'designer',
+                y = 'designer';
+            } else {
+                x = event.target.id.charAt(1),
+                y = event.target.id.charAt(3);
             }
 
-            event.target.classList.remove("holder-hover");
+            controller.monsterChangedPosition(
+                data, 
+                x, y
+            );
+        }
+
+        event.target.classList.remove("holder-hover");
+    }
+    
+
+    setupMonsterConfigurator( controller ) {
+
+        document.querySelector('button#createMonster').addEventListener('click', function() {
+            document.querySelector('button#createMonster').style.display = "none";
+            document.querySelector('div.creation').style.display = "block";
+            
+            return controller.createNewMonster();
         });
 
     }

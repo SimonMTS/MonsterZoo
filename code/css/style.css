@@ -71,6 +71,9 @@ div.holder {
     padding: 5px;
 }
 div.holder.holder-hover {
+    background-color: #F44336;
+}
+div.holder.holder-hover:empty {
     background-color: #4CAF50;
 }
 
@@ -98,16 +101,47 @@ div.monster {
     cursor: -moz-grab;
     cursor: -webkit-grab;
 
-    background: url(https://placekitten.com/200/200) no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-
     border-radius: 5px;
+}
+div.monster img {
+    width: calc( 100% - 10px );
+    margin-left: 5px;
+    
+    height: calc( 100% - 10px );
+    margin-top: 5px; /*-28px;*/
+    z-index: -999;
 }
 
 div.holder.design div.monster {
     height: 170px;
     width: 170px;
+}
+div.holder.design div.monster img {
+    width: calc( 100% - 10px );
+    margin: 5px;
+}
+
+span.badge.weather {
+    cursor: pointer;
+}
+
+div.weather-dropdown {
+    display: none;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+    font-size: 1rem;
+    z-index: 999;
+    position: absolute;
+    top: 45px;
+    right: 15px;
+}
+
+div.weather-dropdown span {
+    display: block;
+    padding: 10px;
+    border-top: 1px black solid;
+    cursor: pointer;
+}
+div.weather-dropdown span:hover {
+    filter: brightness(85%);
 }

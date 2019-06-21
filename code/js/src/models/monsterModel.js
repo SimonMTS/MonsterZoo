@@ -36,25 +36,13 @@ class monsterModel {
         localStorage.setItem('monsterLocations', JSON.stringify(this.locations));
     }
 
-    addMonsterToLocation( climate, id, x, y, properties ) {
+    addMonsterToLocation( id ) {
         
-        if ( x == 'designer' && y == 'designer' ) {
-
-            this.locations.designer.push({
-                'id': id,
-                'x': x,
-                'y': y
-            });
-
-        } else {
-
-            this.locations[climate].push({
-                'id': id,
-                'x': x,
-                'y': y
-            });
-
-        }
+        this.locations.designer.push({
+            'id': id,
+            'x': 'designer',
+            'y': 'designer'
+        });
 
         this.saveLocations();
 
@@ -110,6 +98,18 @@ class monsterModel {
         let designerLocations = this.locations.designer;
 
         return climateLocations.concat( designerLocations );
+
+    }
+
+    saveMonsterProperties( id, properties ) {
+
+        localStorage.setItem(id, JSON.stringify( properties ));
+
+    }
+
+    getMonsterProperties( id ) {
+
+        return JSON.parse( localStorage.getItem( id ) );
 
     }
 

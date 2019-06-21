@@ -1,5 +1,6 @@
 let terrainModel = require('../models/terrainModel.js'),
-    terrainView = require('../views/terrainView.js');
+    terrainView = require('../views/terrainView.js'),
+    configuratorView = require('../views/configuratorView.js'),
     monsterModel = require('../models/monsterModel.js');
 
 class terrainController {
@@ -10,13 +11,20 @@ class terrainController {
 
         this.setClimate( currentClimateName );
         terrainView.setClimateChangeEventListeners( this );
+
+        terrainView.setWeatherEventListeners( this );
+
+        configuratorView.setConfiguratorEventListeners();
+        configuratorView.validateConfiguratorFields();
+
+        configuratorView.getValuesAsObject(); // todo temp remove
     
     }
 
     setClimate( name ) {
 
         terrainView.emptyField();
-        terrainView.drawField();
+        terrainView.drawField( monsterModel.getMonsterInDesigner() === false );
 
         let climate = terrainModel.getClimateByName( name );
 
@@ -40,6 +48,7 @@ class terrainController {
     setWeather( weather ) {
         
         terrainView.setWeatherBadge( weather );
+        terrainModel.setWeather( weather.toLowerCase() );
 
     }
 
@@ -49,6 +58,7 @@ class terrainController {
 
     monsterChangedPosition( id, x, y ) {
         monsterModel.moveMonsterToLocation( terrainModel.getCurrentClimate(), id, x, y );
+        configuratorView.updateConfigurator( monsterModel.getMonsterInDesigner(), this );
     }
 
 }

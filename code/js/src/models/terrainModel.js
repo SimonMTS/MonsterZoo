@@ -8,6 +8,8 @@ class terrainModel {
             localStorage.setItem('currentClimate', 'jungle');
         }
 
+        this.weather = '...';
+
     }
 
     getCurrentClimate() {
@@ -24,7 +26,6 @@ class terrainModel {
 
     getWeatherFromClimate( controller, climate, __callback ) {
         /*
-
             Thunderstorm
             Drizzle
             Rain
@@ -41,7 +42,6 @@ class terrainModel {
             Tornado
             Clear
             Clouds
-
         */
 
         let city = climate['reference city'];
@@ -72,6 +72,14 @@ class terrainModel {
                 __callback( controller, null );
             });
 
+    }
+
+    setWeather( weather ) {
+        this.weather = weather;
+    }
+
+    getWeather() {
+        return this.weather;
     }
 
 }

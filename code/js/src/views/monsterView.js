@@ -1,4 +1,5 @@
-let terrainView = require('../views/terrainView.js');
+let terrainView = require('./terrainView.js'),
+    configuratorView = require('./configuratorView.js');
 
 class monsterView {
 
@@ -8,11 +9,17 @@ class monsterView {
         monster.setAttribute('class', 'monster');
         monster.setAttribute('draggable', 'true');
 
+        let image = document.createElement('img');
+        image.src = 'https://placekitten.com/300/300';
+        image.setAttribute('draggable', 'false');
+
+        monster.appendChild( image );
+
         return monster;
 
     }
 
-    drawMonsters( locations ) {
+    drawMonsters( locations, controller ) {
 
         for ( let i = 0; i < locations.length; i++ ) {
             let holder = terrainView.getHolderPosition( locations[i].x, locations[i].y );
@@ -21,57 +28,61 @@ class monsterView {
                 continue;
             }
 
-            this.drawMonster( holder, {
+            this.drawMonster( holder, controller, {
                 'id': locations[i].id
             });
         }
 
-        let monsters = document.querySelectorAll('div.monster');
-        for ( let i = 0; i < monsters.length; i++ ) {
-
-            this.addMonsterEventListener( monsters[i] );
-
-        }
-
     }
 
-    drawMonster( container, properties ) {
+    drawMonster( container, controller, properties ) {
         
         let monster = this.getBaseMonster();
+        let savedProperties = controller.retrieveMonsterProperties( properties.id );
+
         monster.setAttribute('id', properties.id);
+        monster.style.backgroundColor = savedProperties.monsterColor;
 
         container.appendChild( monster );
 
-        this.addMonsterEventListener( monster );
+        this.addMonsterEventListener( monster, controller );
 
     }
 
-    addMonsterEventListener( monster ) {
+    addMonsterEventListener( monster, controller ) {
 
-        monster.addEventListener('click', this.monsterClick);
+        monster.addEventListener('click', function(e) {
+            thisView.monsterClick(e, controller);
+        });
 
-        monster.addEventListener('dragstart', this.monsterDragstart);
+        let thisView = this;
+        monster.addEventListener('dragstart', function(e) {
+            thisView.monsterDragstart(e, controller);
+        });
 
     }
 
-    monsterDragstart( event ) {
-
+    monsterDragstart( event, controller ) {
+        console.log('parent-drag');
+        
         event.dataTransfer.setData("draggable", event.target.id);
 
         event.target.style.transform = 'translate(0, 0)';
         event.dataTransfer.setDragImage(event.target, event.target.offsetWidth/2, event.target.offsetHeight/2);
+
+        if ( event.path[1].id == 'hdesign' ) {
+
+            controller.updateMonsterProperties( event.target.id, configuratorView.getValuesAsObject() );
+
+        }
+
+        event.stopPropagation();
         
     }
 
-    monsterClick( event ) {
-        console.log('clicked: '+this.id);
-    }
-
-    setupMonsterConfigurator( controller ) {
-
-        document.querySelector('button#createMonster').addEventListener('click', function(){
-            return controller.createNewMonster();
-        });
+    monsterClick( event, controller ) {
+        
+        console.log( controller.retrieveMonsterProperties( event.target.id ) );
 
     }
 
