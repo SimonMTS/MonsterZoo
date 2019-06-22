@@ -18,7 +18,7 @@ class terrainController {
         
         let monsterInDesigner = monsterModel.getMonsterInDesigner();
         if ( monsterInDesigner != false ) {
-            configuratorView.loadMonsterData( monsterInDesigner, this.monsterController );
+            configuratorView.loadMonsterData( monsterInDesigner, this.monsterController, false );
         }
     
     }

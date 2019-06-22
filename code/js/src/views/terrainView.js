@@ -216,6 +216,12 @@ class terrainView {
 
     setupMonsterConfigurator( controller ) {
 
+        document.querySelector('button.delete-monster-btn').addEventListener('click', function() {
+            
+            controller.removeMonsterInDesigner();
+
+        });
+
         document.querySelector('button#createMonster').addEventListener('click', function() {
             document.querySelector('button#createMonster').style.display = "none";
             document.querySelector('div.creation').style.display = "block";

@@ -29,7 +29,7 @@
                             </div>
 
                         </div>
-                        <div class="row">
+                        <div class="row monster-configurator-row">
 
                             <div class="col-12 pt-2">
                                 <button type="button" id="createMonster" class="btn btn-light bg-mat-500 btn-lg btn-block mt-1">
@@ -38,7 +38,8 @@
 
                                 <div class="creation">
 
-                                        <input type="hidden" id="monsterID">
+                                    <input type="hidden" id="monsterID">
+                                    <input type="hidden" id="monsterPowerLvl">
 
                                     <div class="input-group mt-2" id="monsterName">
                                         <div class="input-group-prepend">
@@ -111,6 +112,13 @@
                                         <label class="custom-control-label" for="canSwimCheckbox">Can swim</label>
                                     </div>
 
+
+                                    <div class="custom-control custom-checkbox mt-3 ml-2" id="drawMonster">
+                                        <input type="checkbox" class="custom-control-input" id="drawMonsterCheckbox">
+                                        <label class="custom-control-label" for="drawMonsterCheckbox">Draw monster</label>
+                                    </div>
+                                    
+                                    <button type="button" class="btn btn-danger delete-monster-btn">Throw monster away</button>
                                 </div>
                                     
                                 <div class="holder design bg-mat-100" id="hdesign"></div>

@@ -2,7 +2,7 @@ class configuratorView {
     
     constructor() {
 
-        this.randomNames = [ 'aamon', 'abaddon', 'abezethibou', 'abraxas', 'abyzou', 'adramelech', 'aeshma', 'agaliarept', 'agares', 'agiel', 'agrat', 'ahriman', 'aim', 'akoman', 'akvan', 'ala', 'alal', 'alastor', 'allocer', 'alloces', 'allu', 'alu', 'amaymon', 'amdusias', 'amon', 'amy', 'anamalech', 'ancitif', 'andhaka', 'andras', 'andrealphus', 'andromalius', 'antichrist', 'anzu', 'apollyon', 'archon', 'armaros', 'arunasura', 'asag', 'asakku', 'asbel', 'asmodai', 'asmodeus', 'astaroth', 'asura', 'azazel', 'baal', 'babi', 'bael', 'bakasura', 'balam', 'balberith', 'banshee', 'baphomet', 'barbas', 'barbatos', 'barong', 'bathin', 'bathym', 'beelzebub', 'behemoth', 'beherit', 'beleth', 'belial', 'belphegor', 'berith', 'bhoot', 'bhuta', 'bifrons', 'boruta', 'botis', 'buer', 'bukavac', 'bune', 'bushyasta', 'caacrinolaas', 'caassimolar', 'caim', 'camio', 'canio', 'cerbere', 'charun', 'chax', 'chemosh', 'choronzon', 'cimeies', 'cimejes', 'classyalabolas', 'corson', 'crocell', 'crocell', 'culsu', 'daeva', 'dagon', 'dahak', 'dahaka', 'dajjal', 'dajjal', 'danjal', 'dantalion', 'decarabia', 'demiurge', 'demogorgon', 'devil', 'drekavac', 'dzoavits', 'eblis', 'eisheth', 'eligos', 'flauros', 'flavros', 'focalor', 'foraii', 'foras', 'forcas', 'forneus', 'forras', 'furcas', 'furfur', 'gaap', 'gaderel', 'gaki', 'gamigin', 'ghoul', 'glassialabolis', 'gomory', 'gorgon', 'gremory', 'grigori', 'gualichu', 'guayota', 'gusion', 'gusoin', 'gusoyn', 'haagenti', 'haborym', 'halphas', 'hauras', 'haures', 'havres', 'ifrit', 'incubus', 'ipes', 'ipos', 'jikininki', 'jinn', 'kabandha', 'kabhanda', 'kali', 'kasadya', 'kimaris', 'kokabiel', 'krampus', 'kroni', 'kumbhakarna', 'lechies', 'legion', 'lempo', 'leraie', 'leraje', 'leviathan', 'leyak', 'lili', 'lilim', 'lilin', 'lilin', 'lilith', 'lucifer', 'malaphar', 'malephar', 'malphas', 'malthus', 'mammon', 'mara', 'marax', 'marchosias', 'maricha', 'marthim', 'mastema', 'mathim', 'mephistopheles', 'merihem', 'moloch', 'morax', 'morpheus', 'murmur', 'naamah', 'naberius', 'naberus', 'namtar', 'nero', 'ninurta', 'onoskelis', 'orcus', 'ordog', 'orias', 'oriax', 'orobas', 'ose', 'paimon', 'pazuzu', 'pelesit', 'penemue', 'phenex', 'pithius', 'pocong', 'pontianak', 'preta', 'procell', 'pruflas', 'puloman', 'rahab', 'rakshasa', 'rangda', 'raum', 'ravana', 'ronove', 'rusalka', 'sabnock', 'saleos', 'samael', 'satan', 'seir', 'semyaz', 'shax', 'shedim', 'sitri', 'solas', 'sthenno', 'stolas', 'suanggi', 'succubus', 'surgat', 'tannin', 'toyol', 'tuchulcha', 'ukobach', 'valac', 'valefar', 'vanth', 'vapula', 'vassago', 'vepar', 'vine', 'wendigo', 'xaphan', 'xezbeth', 'yeqon', 'yeterel', 'zagan', 'zahhak', 'zepar', 'ziminiar', 'zu' ];
+        this.randomNames = [ 'aamon', 'abaddon', 'abezethibou', 'abraxas', 'abyzou', 'adramelech', 'aeshma', 'agaliarept', 'agares', 'agiel', 'agrat', 'ahriman', 'aim', 'akoman', 'akvan', 'ala', 'alal', 'alastor', 'allocer', 'alloces', 'allu', 'alu', 'amaymon', 'amdusias', 'amon', 'amy', 'anamalech', 'ancitif', 'andhaka', 'andras', 'andrealphus', 'andromalius', 'anzu', 'apollyon', 'archon', 'armaros', 'arunasura', 'asag', 'asakku', 'asbel', 'asmodai', 'asmodeus', 'astaroth', 'asura', 'azazel', 'baal', 'babi', 'bael', 'bakasura', 'balam', 'balberith', 'banshee', 'baphomet', 'barbas', 'barbatos', 'barong', 'bathin', 'bathym', 'beelzebub', 'behemoth', 'beherit', 'beleth', 'belial', 'belphegor', 'berith', 'bhoot', 'bhuta', 'bifrons', 'boruta', 'botis', 'buer', 'bukavac', 'bune', 'bushyasta', 'caacrinolaas', 'caassimolar', 'caim', 'camio', 'canio', 'cerbere', 'charun', 'chax', 'chemosh', 'choronzon', 'cimeies', 'cimejes', 'classyalabolas', 'corson', 'crocell', 'crocell', 'culsu', 'daeva', 'dagon', 'dahak', 'dahaka', 'dajjal', 'dajjal', 'danjal', 'dantalion', 'decarabia', 'demiurge', 'demogorgon', 'devil', 'drekavac', 'dzoavits', 'eblis', 'eisheth', 'eligos', 'flauros', 'flavros', 'focalor', 'foraii', 'foras', 'forcas', 'forneus', 'forras', 'furcas', 'furfur', 'gaap', 'gaderel', 'gaki', 'gamigin', 'ghoul', 'glassialabolis', 'gomory', 'gorgon', 'gremory', 'grigori', 'gualichu', 'guayota', 'gusion', 'gusoin', 'gusoyn', 'haagenti', 'haborym', 'halphas', 'hauras', 'haures', 'havres', 'ifrit', 'incubus', 'ipes', 'ipos', 'jikininki', 'jinn', 'kabandha', 'kabhanda', 'kali', 'kasadya', 'kimaris', 'kokabiel', 'krampus', 'kroni', 'kumbhakarna', 'lechies', 'legion', 'lempo', 'leraie', 'leraje', 'leviathan', 'leyak', 'lili', 'lilim', 'lilin', 'lilin', 'lilith', 'lucifer', 'malaphar', 'malephar', 'malphas', 'malthus', 'mammon', 'mara', 'marax', 'marchosias', 'maricha', 'marthim', 'mastema', 'mathim', 'mephistopheles', 'merihem', 'moloch', 'morax', 'morpheus', 'murmur', 'naamah', 'naberius', 'naberus', 'namtar', 'nero', 'ninurta', 'onoskelis', 'orcus', 'ordog', 'orias', 'oriax', 'orobas', 'ose', 'paimon', 'pazuzu', 'pelesit', 'penemue', 'phenex', 'pithius', 'pocong', 'pontianak', 'preta', 'procell', 'pruflas', 'puloman', 'rahab', 'rakshasa', 'rangda', 'raum', 'ravana', 'ronove', 'rusalka', 'sabnock', 'saleos', 'samael', 'satan', 'seir', 'semyaz', 'shax', 'shedim', 'sitri', 'solas', 'sthenno', 'stolas', 'suanggi', 'succubus', 'surgat', 'tannin', 'toyol', 'tuchulcha', 'ukobach', 'valac', 'valefar', 'vanth', 'vapula', 'vassago', 'vepar', 'vine', 'wendigo', 'xaphan', 'xezbeth', 'yeqon', 'yeterel', 'zagan', 'zahhak', 'zepar', 'ziminiar', 'zu' ];
 
         this.inputFields = {
             "monsterID":        document.querySelector('input#monsterID'),
@@ -15,7 +15,8 @@ class configuratorView {
             "typeOfFur":        document.querySelector('div#typeOfFur select'),
             "monsterColor":     document.querySelector('div#monsterColor select'),
             "monsterCanFly":    document.querySelector('div#monsterCanFly input'),
-            "monsterCanSwim":   document.querySelector('div#monsterCanSwim input')
+            "monsterCanSwim":   document.querySelector('div#monsterCanSwim input'),
+            "monsterPowerLvl":  document.querySelector('input#monsterPowerLvl')
         };
     }
 
@@ -32,7 +33,9 @@ class configuratorView {
             "typeOfFur":        this.inputFields['typeOfFur'].value,
             "monsterColor":     this.inputFields['monsterColor'].value,
             "monsterCanFly":    this.inputFields['monsterCanFly'].checked,
-            "monsterCanSwim":   this.inputFields['monsterCanSwim'].checked
+            "monsterCanSwim":   this.inputFields['monsterCanSwim'].checked,
+            "monsterPowerLvl":  this.inputFields['monsterPowerLvl'].value,
+            "monsterDrawing":   (document.querySelector('#hdesign div.monster canvas') ? document.querySelector('#hdesign div.monster canvas').toDataURL() : '')
         };
 
         return obj;
@@ -51,18 +54,21 @@ class configuratorView {
             document.querySelector('button#createMonster').style.display = "none";
             document.querySelector('div.creation').style.display = "block";
 
-            this.loadMonsterData( monsterInDesigner, controller );
+            this.loadMonsterData( monsterInDesigner, controller, true );
+
+            document.querySelector('#hdesign div.monster canvas').height = 170;
+            document.querySelector('#hdesign div.monster canvas').width = 170;
 
         }
 
     }
 
-    loadMonsterData( monster, controller ) {
+    loadMonsterData( monster, controller, validate ) {
 
-        
         let properties = controller.retrieveMonsterProperties( monster.id );
         
         this.inputFields['monsterID'].value = properties.monsterID;
+        this.inputFields['monsterPowerLvl'].value = properties.monsterPowerLvl;
         this.inputFields['monsterName'].value = properties.monsterName;
         this.inputFields['typeOfMonster'].value = properties.typeOfMonster;
 
@@ -101,16 +107,22 @@ class configuratorView {
         this.inputFields['monsterCanFly'].checked = properties.monsterCanFly;
         this.inputFields['monsterCanSwim'].checked = properties.monsterCanSwim;
 
+        document.querySelector('input#drawMonsterCheckbox').checked = false;
 
-        this.validateConfiguratorFields( controller );
+        if ( validate ) {
+            this.validateConfiguratorFields( controller );
+        }
+
 
     }
 
     generateNewMonster( id, controller ) {
         
         let randomNumber = Math.floor(Math.random() * 4);
+        let monsterPowerLvl = Math.floor(Math.random() * 10) + 1;
 
         this.inputFields['monsterID'].value = id;
+        this.inputFields['monsterPowerLvl'].value = monsterPowerLvl*10;
         this.inputFields['monsterName'].value = '';
         this.inputFields['typeOfMonster'].value = this.inputFields['typeOfMonster'].options[ randomNumber ].value;
         this.inputFields['numberOfArms'].value = false;
@@ -127,19 +139,38 @@ class configuratorView {
     }
 
 
+    unfocusFields() {
+
+        for ( var key in this.inputFields ) {
+            if (!this.inputFields.hasOwnProperty(key)) continue;
+            
+            this.inputFields[key].blur();
+        }
+
+    }
+
+    addDrawableEventListener( __callback ) {
+
+        document.querySelector('input#drawMonsterCheckbox').addEventListener("click", function(event) {
+            __callback( event, document.querySelector('input#drawMonsterCheckbox').checked );
+        });
+
+    }
+
+
     setConfiguratorEventListeners( controller ) {
 
         let thisView = this;
-        document.querySelector('div#typeOfMonster select'   ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ) });
-        document.querySelector('div#monsterName input'      ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ) });
-        document.querySelector('div#numberOfArms select'    ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ) });
-        document.querySelector('div#typeOfArm select'       ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ) });
-        document.querySelector('div#numberOfLegs select'    ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ) });
-        document.querySelector('div#numberOfEyes select'    ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ) });
-        document.querySelector('div#typeOfFur select'       ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ) });
-        document.querySelector('div#monsterColor select'    ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ) });
-        document.querySelector('div#monsterCanFly input'    ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ) });
-        document.querySelector('div#monsterCanSwim input'   ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ) });
+        document.querySelector('div#typeOfMonster select'   ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ); });
+        document.querySelector('div#monsterName input'      ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ); });
+        document.querySelector('div#numberOfArms select'    ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ); });
+        document.querySelector('div#typeOfArm select'       ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ); });
+        document.querySelector('div#numberOfLegs select'    ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ); });
+        document.querySelector('div#numberOfEyes select'    ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ); });
+        document.querySelector('div#typeOfFur select'       ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ); });
+        document.querySelector('div#monsterColor select'    ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ); });
+        document.querySelector('div#monsterCanFly input'    ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ); });
+        document.querySelector('div#monsterCanSwim input'   ).addEventListener("change",  function(event) { thisView.validateConfiguratorFields( controller ); });
 
     }
 

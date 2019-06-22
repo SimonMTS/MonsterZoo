@@ -113,6 +113,15 @@ class monsterModel {
 
     }
 
+    removeMonsterInDesigner( id ) {
+
+        localStorage.removeItem(id);
+        
+        this.locations.designer = [];
+        this.saveLocations();
+
+    }
+
 }
 
 module.exports = new monsterModel();

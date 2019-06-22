@@ -102,12 +102,29 @@ div.monster {
     cursor: -webkit-grab;
 
     border-radius: 3px;
+
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
-div.monster img {
-    width: calc( 100% - 10px );
-    height: calc( 100% - 10px );
-    margin: 5px;
+.monster-shake {
+    -webkit-animation: kf_shake 0.4s 1 linear;
+    -moz-animation: kf_shake 0.4s 1 linear;
+    -o-animation: kf_shake 0.4s 1 linear;
+}
+@-webkit-keyframes kf_shake {
+    0% { -webkit-transform: translate(30px); }
+    20% { -webkit-transform: translate(-30px); }
+    40% { -webkit-transform: translate(15px); }
+    60% { -webkit-transform: translate(-15px); }
+    80% { -webkit-transform: translate(8px); }
+    100% { -webkit-transform: translate(0px); }
+}
+
+div.monster canvas {
+    height: 100%;
+    margin: 0 auto;
+    display: block;
 
     pointer-events: none;
 }
@@ -116,10 +133,85 @@ div.holder.design div.monster {
     height: 170px;
     width: 170px;
 }
-div.holder.design div.monster img {
-    width: calc( 100% - 10px );
-    margin: 5px;
+div.holder.design div.monster canvas {
+    height: 170px;
+    width: 170px;
 }
+
+
+button.delete-monster-btn {
+    position: absolute;
+    bottom: 69px;
+    right: 15px;
+}
+
+div.monster-configurator-row, div.monster-configurator-row div.col-12 {
+    height: 100%;
+}
+
+
+div.monster-stats {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    padding: 15px;
+}
+
+div.monster-stats h1, div.monster-stats h5 {
+    text-align: center;
+}
+
+div.monster-stats canvas {
+    margin: 0 auto;
+    display: block;
+}
+
+div.monster-power-bar {
+    width: 100%;
+    height: 30px;
+    background-color: lightcoral;
+    border: 1px solid red;
+    position: relative;
+    text-align: center;
+    z-index: 1;
+}
+div.monster-power-bar::before {
+    display: block;
+    content: '';
+    width: 70%;
+    height: 28px;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.15;
+    z-index: 1;
+}
+div.monster-power-bar::after {
+    display: block;
+    content: '';
+    width: 0%;
+    height: 28px;
+    background-color: #f03a17;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+div.monster-power-bar.p1::after { width: 10%; }
+div.monster-power-bar.p2::after { width: 20%; }
+div.monster-power-bar.p3::after { width: 30%; }
+div.monster-power-bar.p4::after { width: 40%; }
+div.monster-power-bar.p5::after { width: 50%; }
+div.monster-power-bar.p6::after { width: 60%; }
+div.monster-power-bar.p7::after { width: 70%; }
+div.monster-power-bar.p8::after { width: 80%; }
+div.monster-power-bar.p9::after { width: 90%; }
+div.monster-power-bar.p10::after { width: 100%; }
+
 
 span.badge.weather {
     cursor: pointer;
@@ -144,4 +236,60 @@ div.weather-dropdown span {
 }
 div.weather-dropdown span:hover {
     filter: brightness(85%);
+}
+
+div.fireMove {
+    z-index: 99999;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    background-color: red;
+    opacity: 0;
+
+    transition: opacity 3s ease-in-out;
+}
+
+div.fireMove.active {
+    -webkit-animation: opacity-animation 0.6s 1 linear;
+    -moz-animation: opacity-animation 0.6s 1 linear;
+    -o-animation: opacity-animation 0.6s 1 linear;
+}
+@-webkit-keyframes opacity-animation {
+    0% { opacity: 0; }
+    50% { opacity: 0.7; }
+    100% { opacity: 0; }
+}
+
+div.col-8 div.full-height-box.windMove {
+    -webkit-animation: rotate-animation 0.6s 1 ease-out;
+    -moz-animation: rotate-animation 0.6s 1 ease-out;
+    -o-animation: rotate-animation 0.6s 1 ease-out;
+}
+@-webkit-keyframes rotate-animation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.drop {
+    background:-webkit-gradient(linear,0% 0%,0% 100%, from(rgba(13,52,58,1) ), to(rgba(255,255,255,0.6))  );
+    background: -moz-linear-gradient(top, rgba(13,52,58,1) 0%, rgba(255,255,255,.6) 100%);
+    width:3px;
+    height:89px;
+    position: absolute;
+    bottom:200px;
+    -webkit-animation: fall .63s linear infinite;
+    -moz-animation: fall .63s linear infinite;
+
+}
+  
+/* animate the drops*/
+@-webkit-keyframes fall {
+    to {margin-top:2000px;}
+}
+@-moz-keyframes fall {
+    to {margin-top:2000px;}
 }
