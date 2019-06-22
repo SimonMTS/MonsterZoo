@@ -90,6 +90,12 @@ class monsterController {
         return (powerLevel > 100 ? 100 : powerLevel);
     }
 
+    monsterNotDrawable() {
+
+        monsterView.disableDrawable( this );
+
+    }
+
 }
 
 module.exports = new monsterController();

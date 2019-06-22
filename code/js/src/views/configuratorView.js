@@ -109,9 +109,7 @@ class configuratorView {
 
         document.querySelector('input#drawMonsterCheckbox').checked = false;
 
-        if ( validate ) {
-            this.validateConfiguratorFields( controller );
-        }
+        this.validateConfiguratorFields( controller, validate );
 
 
     }
@@ -174,7 +172,9 @@ class configuratorView {
 
     }
 
-    validateConfiguratorFields( controller ) {
+    validateConfiguratorFields( controller, updateProps = true ) {
+
+        controller.monsterNotDrawable();
         
         this.validateMonsterName( this.inputFields );
         this.validateNumberOfArms( this.inputFields );
@@ -186,7 +186,9 @@ class configuratorView {
         this.validateMonsterCanFly( this.inputFields );
         this.validateMonsterCanSwim( this.inputFields );
         
-        controller.updateMonsterProperties( this.inputFields['monsterID'].value, this.getValuesAsObject() );
+        if ( updateProps ) {
+            controller.updateMonsterProperties( this.inputFields['monsterID'].value, this.getValuesAsObject() );
+        }
 
     }
 

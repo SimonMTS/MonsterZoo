@@ -126,6 +126,15 @@ class monsterView {
         });
     }
 
+    disableDrawable( controller ) {
+
+        document.querySelector('input#drawMonsterCheckbox').checked = false;
+
+        this.drawable = false;
+        this.drawing = false;
+
+    }
+
     addMonsterEventListener( monster, controller ) {
 
         let thisView = this;
@@ -137,7 +146,7 @@ class monsterView {
 
 
         monster.addEventListener('dragstart', function(e) {
-            thisView.monsterDragstart(e);
+            thisView.monsterDragstart(e, controller);
         });
 
         monster.addEventListener('dragend', function(e) {
@@ -229,9 +238,10 @@ class monsterView {
     }
 
 
-    monsterDragstart( event ) {
+    monsterDragstart( event, controller ) {
 
         this.hideMonsterStats();
+        this.disableDrawable( controller );
 
         
         event.dataTransfer.setData("draggable", event.target.id);
