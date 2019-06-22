@@ -204,6 +204,12 @@ class terrainView {
                 y = event.target.id.charAt(3);
             }
 
+            let audio = new Audio('../../../assets/drop.mp3');
+            audio.play();
+            setTimeout(function() {
+                audio.remove()
+            }, 2000);
+
             controller.monsterChangedPosition(
                 data, 
                 x, y

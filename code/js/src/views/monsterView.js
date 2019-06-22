@@ -256,12 +256,14 @@ class monsterView {
 
             event.target.style.boxShadow = '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)';
             event.target.style.transform = 'scale(1.5, 1.5)';
+            event.target.parentElement.style.zIndex = 99;
 
             this.executeSpecialMove( monster.typeOfMonster.toLowerCase() );
 
             setTimeout(function() { 
-                event.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)';
+                event.target.style.boxShadow = '0 0px 0px rgba(0,0,0,0), 0 0px 0px rgba(0,0,0,0)';
                 event.target.style.transform = 'scale(1, 1)';
+                event.target.parentElement.style.zIndex = 1;
             }, 500);
 
         } else {
@@ -347,8 +349,13 @@ class monsterView {
             monsterCanSwim.innerHTML = (monsterInfo.monsterCanSwim ? '✔' : '❌')+' Can'+(monsterInfo.monsterCanSwim ? '' : '\'t')+' swim.';
             monsterStats.appendChild( monsterCanSwim );
 
+        let monsterPower = document.createElement('h5');
+            monsterPower.setAttribute('class', 'mt-4 mb-0');
+            monsterPower.innerHTML = 'Power level';
+            monsterStats.appendChild( monsterPower );
+
         let monsterPowerBar = document.createElement('div');
-            monsterPowerBar.setAttribute('class', 'monster-power-bar mt-4 p'+controller.getAugementedPowerLvl(monsterInfo)/10);
+            monsterPowerBar.setAttribute('class', 'monster-power-bar mt-1 p'+controller.getAugementedPowerLvl(monsterInfo)/10);
             monsterPowerBar.innerHTML = controller.getAugementedPowerLvl(monsterInfo)+' / 100';
             monsterStats.appendChild( monsterPowerBar );
 
@@ -362,6 +369,12 @@ class monsterView {
     }
 
     executeSpecialMove( type ) {
+
+        let audio = new Audio('../../../assets/ahh.mp3');
+        audio.play();
+        setTimeout(function() {
+            audio.remove()
+        }, 2000);
 
         if ( type == 'water' ) {
 
@@ -439,6 +452,56 @@ class monsterView {
                 document.querySelector('div.col-8 div.full-height-box').classList.remove('windMove');
             }, 500);
 
+        }
+
+    }
+
+    reactToMove( x, y ) {
+
+        if ( x == 'designer' && y == 'designer' ) { return; }
+
+        let monsters = document.querySelectorAll('div#tiles div.holder:not(#h'+x+'-'+y+') div.monster'),
+            me = document.querySelector('div#tiles div.holder#h'+x+'-'+y+' div.monster');
+
+        for ( let i = 0; i < monsters.length; i++ ) {
+
+            let thisX = me.offsetLeft + 50,
+                thisY = me.offsetTop + 30;
+
+            let thatX = monsters[i].offsetLeft + 50,
+                thatY = monsters[i].offsetTop + 30;
+
+            let dy = thatY - thisY,
+                dx = thatX - thisX,
+                theta = Math.atan2(dy, dx);
+            theta *= 180/Math.PI;
+            theta += 90;
+            
+            
+            if ( theta >= 180 ) {
+                theta = -Math.abs( 360 - theta );
+            }
+
+            
+
+            setTimeout(function() {
+                monsters[i].style.transform = 'rotate('+theta+'deg)';
+
+                let audio = new Audio('../../../assets/huh.mp3');
+                audio.play();
+                setTimeout(function() {
+                    audio.remove()
+                }, 2000);
+
+                if ( i >= monsters.length-1 ) {
+                    setTimeout(function() { 
+                        for ( let i = 0; i < monsters.length; i++ ) {
+                            monsters[i].style.transform = 'rotate('+0+'deg)';
+                        }
+                    }, 500);
+                }
+
+            }, 300 + i * 200);
         }
 
     }

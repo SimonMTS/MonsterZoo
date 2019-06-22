@@ -1,7 +1,8 @@
 let terrainModel = require('../models/terrainModel.js'),
     terrainView = require('../views/terrainView.js'),
-    configuratorView = require('../views/configuratorView.js'),
-    monsterModel = require('../models/monsterModel.js');
+    monsterModel = require('../models/monsterModel.js'),
+    monsterView = require('../views/monsterView.js'),
+    configuratorView = require('../views/configuratorView.js');
 
 class terrainController {
 
@@ -61,6 +62,8 @@ class terrainController {
     monsterChangedPosition( id, x, y ) {
         monsterModel.moveMonsterToLocation( terrainModel.getCurrentClimate(), id, x, y );
         configuratorView.updateConfigurator( monsterModel.getMonsterInDesigner(), this.monsterController );
+
+        monsterView.reactToMove( x, y );
     }
 
 }
